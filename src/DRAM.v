@@ -19,12 +19,12 @@
 
 
 //Copyright (C) 2019  Intel Corporation. All rights reserved.
-//Your use of Intel Corporation's design tools, logic functions
-//and other software and tools, and any partner logic
-//functions, and any output files from any of the foregoing
-//(including device programming or simulation files), and any
-//associated documentation or information are expressly subject
-//to the terms and conditions of the Intel Program License
+//Your use of Intel Corporation's design tools, logic functions 
+//and other software and tools, and any partner logic 
+//functions, and any output files from any of the foregoing 
+//(including device programming or simulation files), and any 
+//associated documentation or information are expressly subject 
+//to the terms and conditions of the Intel Program License 
 //Subscription Agreement, the Intel Quartus Prime License Agreement,
 //the Intel FPGA IP License Agreement, or other applicable license
 //agreement, including, without limitation, that your use is for
@@ -37,15 +37,18 @@
 // synopsys translate_off
 `timescale 1 ps / 1 ps
 // synopsys translate_on
-module DRAM
-(
-	input	[8:0]  address,
-	input	clock,
-	input	[15:0]  data,
-	input	wren,
-	output	[15:0]  q
-);
+module DRAM (
+	address,
+	clock,
+	data,
+	wren,
+	q);
 
+	input	[8:0]  address;
+	input	  clock;
+	input	[15:0]  data;
+	input	  wren;
+	output	[15:0]  q;
 `ifndef ALTERA_RESERVED_QIS
 // synopsys translate_off
 `endif
@@ -97,6 +100,7 @@ module DRAM
 		altsyncram_component.widthad_a = 9,
 		altsyncram_component.width_a = 16,
 		altsyncram_component.width_byteena_a = 1;
+
 
 endmodule
 
