@@ -1,4 +1,4 @@
-module Register8
+module register_type_2
 (
     input clk,
     input write_en,
