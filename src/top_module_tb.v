@@ -16,7 +16,7 @@ wire end_process2;
 wire end_process3;
 wire end_process4;
 
-top_module1 top_module (
+top_module top_module (
 	.status(status),
 	.clk(clk),
 	.clockm(clockm),
