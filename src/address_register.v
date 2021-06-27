@@ -1,13 +1,13 @@
-module AR
+module address_register
 (
-input clk;
-input write_en1;
-input write_en2;
-input rst_en;
-input inc_en;
-input [15:0] data_in1;
-input [15:0] data_in2;
-output reg [15:0] data_out;
+    input clk,
+    input write_en1,
+    input write_en2,
+    input rst_en,
+    input inc_en,
+    input [15:0] data_in1,
+    input [15:0] data_in2,
+    output reg [15:0] data_out
 );
 
 always @ (posedge clk)
