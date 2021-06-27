@@ -1,8 +1,13 @@
-module Register1(clk,write_en,rst_en,inc_en,data_in,data_out);   //normal register with read,write,inc,rst
-input clk;input write_en;input rst_en;input inc_en;
-input [15:0] data_in;
-output reg [15:0] data_out;
-	
+module register_type_1
+(
+    input clk,
+    input write_en,
+    input rst_en,
+    input inc_en,
+    input [15:0] data_in,
+    output reg [15:0] data_out
+);
+
 always @ (posedge clk)
 begin
 	if (write_en == 1)
