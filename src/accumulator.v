@@ -1,5 +1,6 @@
-module AC
-(   input clk,
+module accumulator
+(
+    input clk,
 	input write_en,
 	input rst_en,
 	input aluout_en,
