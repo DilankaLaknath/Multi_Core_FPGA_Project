@@ -44,7 +44,7 @@ begin
             ar_out <= ar_out4;
             dram_out4 <= dram_out;
         end
-	else if (mode == 4'd5) 
+	else if (mode == 4'd5)
         begin
             ar_out <= ar_out1;
             bus_out <= bus_out1;

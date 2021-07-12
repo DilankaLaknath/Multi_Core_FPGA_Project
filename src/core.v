@@ -54,7 +54,7 @@ bus BUS( .clock(clock),.read_en(read_en),.id(id_out),.i(i_out),.j(j_out),.k(k_ou
 alu ALU(.clock(clock),.in1(ac_out),.in2(bus_out),.alu_op(alu_op),.out(alu_out),.z(z));
 
 //PC//
-register_type_1 PC(.clk(clk),.write_en(write_en[15]),.rst_en(rst_en[15]),.inc_en(inc_en[4]),.data_in(bus_out),.data_out(pc_out));
+register_16 PC(.clk(clk),.write_en(write_en[15]),.rst_en(rst_en[15]),.inc_en(inc_en[4]),.data_in(bus_out),.data_out(pc_out));
 
 //DR//
 data_register DR(.clk(clk),.write_en(write_en[14]),.data_in(bus_out),.data_out(dr_out));
@@ -64,10 +64,10 @@ address_register AR(.clk(clk),.write_en1(write_en[13]),.write_en2(write_en[1]),.
 .data_in1(bus_out),.data_in2(r_out),.data_out(ar_out));
 
 //IR//
-register_type_1 IR(.clk(clk),.write_en(write_en[12]),.rst_en(rst_en[12]),.inc_en(),.data_in(bus_out),.data_out(ir_out)); 
+register_16 IR(.clk(clk),.write_en(write_en[12]),.rst_en(rst_en[12]),.inc_en(),.data_in(bus_out),.data_out(ir_out));
 
 //R//
-register_type_1 R(.clk(clk),.write_en(write_en[11]),.rst_en(rst_en[11]),.inc_en(inc_en[2]),.data_in(bus_out),.data_out(r_out));
+register_16 R(.clk(clk),.write_en(write_en[11]),.rst_en(rst_en[11]),.inc_en(inc_en[2]),.data_in(bus_out),.data_out(r_out));
 
 //ID//
 core_id ID(.clk(clk),.rst_en(rst_en[10]),.data_in(core_id),.data_out(id_out)); 
@@ -82,10 +82,10 @@ register_type_2 J(.clk(clk),.write_en(write_en[8]),.rst_en(rst_en[8]),.inc_en(in
 register_type_2 K(.clk(clk),.write_en(write_en[7]),.rst_en(rst_en[7]),.inc_en(inc_en[0]),.data_in(),.data_out(k_out));
 
 //A//
-register_type_1 A(.clk(clk),.write_en(write_en[6]),.rst_en(rst_en[6]),.inc_en(),.data_in(bus_out),.data_out(a_out)); 
+register_16 A(.clk(clk),.write_en(write_en[6]),.rst_en(rst_en[6]),.inc_en(),.data_in(bus_out),.data_out(a_out));
 
 //SUM//
-register_type_1 SUM(.clk(clk),.write_en(write_en[5]),.rst_en(rst_en[5]),.inc_en(),.data_in(bus_out),.data_out(sum_out)); 
+register_16 SUM(.clk(clk),.write_en(write_en[5]),.rst_en(rst_en[5]),.inc_en(),.data_in(bus_out),.data_out(sum_out));
 
 //AC //
 accumulator AC(.clk(clk),.write_en(write_en[4]),.rst_en(rst_en[4]),.aluout_en(write_en[0]),.data_in(bus_out),.alu_out(alu_out),.data_out(ac_out));

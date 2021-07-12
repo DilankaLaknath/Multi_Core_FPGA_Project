@@ -11,7 +11,7 @@ reg inc_en;
 reg [15:0] data_in;
 wire [15:0] data_out;
 
-register_type_1 register(.clk(clk),.write_en(write_en),.rst_en(rst_en),.inc_en(inc_en),.data_in(data_in),.data_out(data_out)); 
+register_16 register(.clk(clk),.write_en(write_en),.rst_en(rst_en),.inc_en(inc_en),.data_in(data_in),.data_out(data_out)); 
 
 initial begin
 	clk = 1'b0;

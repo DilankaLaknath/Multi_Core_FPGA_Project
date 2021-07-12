@@ -1,4 +1,4 @@
-module register_type_1
+module register_16
 (
     input clk,
     input write_en,
