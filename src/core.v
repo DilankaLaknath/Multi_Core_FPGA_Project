@@ -70,16 +70,16 @@ register_16 IR(.clk(clk),.write_en(write_en[12]),.rst_en(rst_en[12]),.inc_en(),.
 register_16 R(.clk(clk),.write_en(write_en[11]),.rst_en(rst_en[11]),.inc_en(inc_en[2]),.data_in(bus_out),.data_out(r_out));
 
 //ID//
-core_id ID(.clk(clk),.rst_en(rst_en[10]),.data_in(core_id),.data_out(id_out)); 
+core_id ID(.clk(clk),.rst_en(rst_en[10]),.data_in(core_id),.data_out(id_out));
 
 //I//
-register_type_2 I(.clk(clk),.write_en(write_en[9]),.rst_en(rst_en[9]),.inc_en(),.data_in(bus_out),.data_out(i_out));
+register_16 I(.clk(clk),.write_en(write_en[9]),.rst_en(rst_en[9]),.inc_en(),.data_in(bus_out),.data_out(i_out));
 
 //J//
-register_type_2 J(.clk(clk),.write_en(write_en[8]),.rst_en(rst_en[8]),.inc_en(inc_en[1]),.data_in(),.data_out(j_out));
+register_16 J(.clk(clk),.write_en(write_en[8]),.rst_en(rst_en[8]),.inc_en(inc_en[1]),.data_in(),.data_out(j_out));
 
 //K//
-register_type_2 K(.clk(clk),.write_en(write_en[7]),.rst_en(rst_en[7]),.inc_en(inc_en[0]),.data_in(),.data_out(k_out));
+register_16 K(.clk(clk),.write_en(write_en[7]),.rst_en(rst_en[7]),.inc_en(inc_en[0]),.data_in(),.data_out(k_out));
 
 //A//
 register_16 A(.clk(clk),.write_en(write_en[6]),.rst_en(rst_en[6]),.inc_en(),.data_in(bus_out),.data_out(a_out));

@@ -54,7 +54,7 @@ memory_controller memory_controller(.clock(clk),.ar_out1(ar_out1),.ar_out2(ar_ou
 .ar_out(ar_out),.bus_out(bus_out),.dram_out1(dram_out1),.dram_out2(dram_out2),.dram_out3(dram_out3),.dram_out4(dram_out4),
 .end_process2(end_process2),.end_process3(end_process3),.end_process4(end_process4));
 
-IRAM_IP  IRAM(.address(pc_out1),.clock(clk),.data(),.wren(),.q(iram_out));
+IRAM  IRAM(.address(pc_out1),.clock(clk),.data(),.wren(),.q(iram_out));
 
 DRAM  DRAM(.address(ar_out),.clock(clk),.data(bus_out),.wren(dram_wren),.q(dram_out));
 
