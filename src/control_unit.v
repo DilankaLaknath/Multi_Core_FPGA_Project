@@ -3,15 +3,15 @@ module control_unit
     input clock,
     input z,
     input [1:0]end_core,
-    input [15:0] instruction,
-    input [1:0] status,
+    input [15:0] instruction ,
     output reg [1:0] alu_op,
-    output reg [15:0] write_en,
+    output reg [15:0] write_en ,
     output reg [4:0] inc_en,
     output reg [3:0] read_en,
     output reg [15:0] rst_en,
-    output reg end_process,
-    output reg[3:0] memory_mode
+    output reg end_process ,
+    output reg[3:0] memory_mode,
+    input [1:0] status
 );
 
 reg [6:0] present = 7'd67;
@@ -79,6 +79,8 @@ endop = 7'd41,
 fetchx = 7'd44,
 ldacx = 7'd45,
 ldacy = 7'd46,
+ldacz = 7'd68,
+
 jmpzyx = 7'd47,
 jumpx = 7'd48,
 loadacx1 =7'd49,
@@ -88,6 +90,8 @@ loadacx4 =7'd52,
 loadacx5 =7'd53,
 loadacx6 =7'd54,
 loadacx7 =7'd55,
+loadacx8 = 7'd69,
+loadacx9 = 7'd70,
 
 stacx1 = 7'd56,
 stacx2 = 7'd57,
@@ -114,16 +118,16 @@ end
 
 always @(present or z or instruction or status)
 case(present)
-    idle: begin
-    read_en <= 4'd0;
-    inc_en <= 5'b00000 ; // PC AR R J K
-    write_en <= 16'b0000000000000000 ;
-    rst_en <= 16'b0000000000000000 ;
-    alu_op <= 2'd0;
-    if (status == 2'b01)
-        next <= fetch1;
-    else
-        next <= idle;
+idle: begin
+read_en <= 4'd0;
+inc_en <= 5'b00000 ; // PC AR R J K
+write_en <= 16'b0000000000000000 ;
+rst_en <= 16'b0000000000000000 ;
+alu_op <= 2'd0;
+if (status == 2'b01)
+    next <= fetch1;
+else
+    next <= idle;
 end
 
 fetch0: begin
@@ -160,27 +164,10 @@ next <= fetch3;
 end
 
 
-//fetch3: begin
-//read_en <= 4'd1;
-//inc_en <= 5'b00000 ;
-//write_en <= 18'b000010000000000000 ;
-//rst_en <= 18'b000000000000000000 ;
-//alu_op <= 2'd0;
-//if (instruction [5:0]==jmpz)
-//    begin
-//    if (z == 1 )
-//    next <= jmpzy1;
-//    else
-//    next <= jmpzn1;
-//    end
-//else
-//    next <= instruction [5:0];
-//
-//end
 fetch3: begin
 read_en <= 4'd1;
 inc_en <= 5'b00000 ;
-write_en <= 16'b0001000000000000 ;  
+write_en <= 16'b0001000000000000 ;
 rst_en <= 16'b0000000000000000 ;
 alu_op <= 2'd0;
 next <= fetch4;
@@ -248,6 +235,15 @@ ldac2: begin
 read_en <= 4'd1;
 inc_en <= 5'b00000 ;
 write_en <= 16'b0010000000000000 ;
+rst_en <= 16'b0000000000000000 ;
+alu_op <= 2'd0;
+next <= ldacz;
+end
+
+ldacz: begin
+read_en <= 4'd0;
+inc_en <= 5'b00000 ;
+write_en <= 16'b0000000000000000 ;
 rst_en <= 16'b0000000000000000 ;
 alu_op <= 2'd0;
 next <= ldac3;
@@ -365,6 +361,26 @@ next <= loadacx7;
 end
 
 loadacx7: begin
+read_en <= 4'd0;
+inc_en <= 5'b00000 ;
+write_en <= 16'b0000000000000000 ;
+rst_en <= 16'b0000000000000000 ;
+alu_op <= 2'd0;
+memory_mode <= 4'd4;
+next <= loadacx8;
+end
+
+loadacx8: begin
+read_en <= 4'd10;
+inc_en <= 5'b00000 ;
+write_en <= 16'b0100000000000000 ;
+rst_en <= 16'b0000000000000000 ;
+alu_op <= 2'd0;
+memory_mode <= 4'd4;
+next <= loadacx9;
+end
+
+loadacx9: begin
 read_en <= 4'd0;
 inc_en <= 5'b00000 ;
 write_en <= 16'b0000000000000000 ;
@@ -742,7 +758,7 @@ rstall1: begin
 read_en <= 4'd0;
 inc_en <= 5'b00000 ;
 write_en <= 16'b0000000000000000 ;
-rst_en <= 16'b0000111111100000 ;
+rst_en <= 16'b0110111111100000 ;
 alu_op <= 2'd0;
 next <= fetch1;
 end
