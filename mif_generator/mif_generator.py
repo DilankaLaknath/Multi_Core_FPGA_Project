@@ -98,7 +98,9 @@ if a == "":
     matrix.write("\n\nResulting matrix after multiplication:\n")
     for i in range(line+3, len(data)):
         c = data[i].split()
-        if i == line+3:
+        if y > n:
+            break
+        elif i == line+3:
             for j in range(col, wordsperline):
                 # print(x,c[j])
                 element = c[j]
@@ -112,18 +114,20 @@ if a == "":
                     y += 1
                     x = 1
         else:
-            if y > n:
-                break
             for j in range(wordsperline):
                 element = c[j]
                 row += (element + " ")
                 x += 1
                 if x > p:
+                    # print("current",y)
                     matrix.write(row)
                     matrix.write("\n")
                     row = ""
                     y += 1
                     x = 1
+                    if y > n:
+                        break
+
 
 dram1.close()
 matrix.close()
