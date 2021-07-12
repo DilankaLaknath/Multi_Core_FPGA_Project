@@ -1,2 +1,2 @@
 # Multi_Core_FPGA_Project
-Matrix Multiplication 
+Matrix Multiplication using multicore processor
