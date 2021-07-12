@@ -27,7 +27,7 @@ C = []
 print("Type each row of matrix A in a new line")
 
 matrix = open(
-    r"D:\Projects\University_Projects\FPGA\Multi_Core_FPGA_Project\Compliler\matrix.txt", "r")
+    r"D:\Projects\University_Projects\FPGA\Multi_Core_FPGA_Project\mif_generator\matrix.txt", "r")
 
 
 addr = ap
