@@ -15,6 +15,7 @@ wire end_process1;
 wire end_process2;
 wire end_process3;
 wire end_process4;
+wire [31:0]clk_counter;
 
 top_module top_module (
 	.status(status),
@@ -27,7 +28,8 @@ top_module top_module (
 	.end_process1(end_process1),
 	.end_process2(end_process2),
 	.end_process3(end_process3),
-	.end_process4(end_process4) );
+	.end_process4(end_process4),
+	.clk_counter(clk_counter));
 
 initial begin
 	clk = 1'b0;
